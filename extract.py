@@ -75,10 +75,7 @@ def inject_pipeline(args, cfg):
 
     if message_model.model.mode == "regression":
         dec_msgs[dec_msgs > 0] = 1
-        dec_msgs[dec_msgs <= 0] = 0
-    elif message_model.model.mode == "logistic":
-        dec_msgs[dec_msgs > 0.5] = 1
-        dec_msgs[dec_msgs <= 0.5] = 0
+        dec_msgs[dec_msgs <= 0] = -1
 
     np.save(os.path.join(save_path, "decoded_msgs"), dec_msgs)
 
