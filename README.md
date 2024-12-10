@@ -66,6 +66,9 @@ Please refer to the repo [WatermarkAttacker](https://github.com/XuandongZhao/Wat
 # Acknowledgments
 The code is built upon [Stable Diffusion](https://github.com/CompVis/stable-diffusion).
 
+# To-Do-List
+- [ ] Fix the extraction bugs.
+
 # Reference
 Please cite our paper if you use our models in your works:
 
