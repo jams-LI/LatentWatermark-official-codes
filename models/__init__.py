@@ -9,17 +9,6 @@ from .MessageModel import NaiveMessageModel
 from .generators import LatentDiffusion, DDIMSampler
 from .generators.aux_modules import MappingFusingUNet
 
-dict_map = {
-    'decoder.0.0.weight': "decoder.0.weight", 
-    'decoder.0.0.bias': "decoder.0.bias", 
-    'decoder.1.0.weight': "decoder.2.weight", 
-    'decoder.1.0.bias': "decoder.2.bias", 
-    'decoder.2.0.weight': "decoder.4.weight", 
-    'decoder.2.0.bias': "decoder.4.bias", 
-    'decoder.3.0.weight': "decoder.6.weight", 
-    'decoder.3.0.bias': "decoder.6.bias",
-}
-
 class ModelWarper():
     def __init__(self, name:str, config:dict, logger=None, pertrained_model=None) -> None:
         self.name = name
@@ -36,15 +25,6 @@ class ModelWarper():
         if pretrain_model_path is not None:
             if os.path.exists(pretrain_model_path):
                 state_dict = torch.load(pretrain_model_path, map_location=torch.device('cpu'))["model"]
-                # For test in debug!!!!!
-                state_dict_new = {}
-                for k, v in state_dict.items():
-                    if k not in dict_map.keys():
-                        state_dict_new[k] = v
-                    else:
-                        state_dict_new[dict_map[k]] = v
-                state_dict = state_dict_new
-                # For test in debug!!!!!
                 missing, unexpected = self.model.load_state_dict(state_dict=state_dict, strict=False)
                 self.logger.info("Load pretrained model {} success!".format(self.name))
                 self.logger.info("Load the pretrained model {}".format(pretrain_model_path))
