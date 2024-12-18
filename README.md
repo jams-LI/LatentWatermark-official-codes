@@ -3,7 +3,7 @@
 
 Latent Watermark: Inject and Detect Watermarks in Latent Diffusion Space
 
-Authors: [Zheling Meng](https://richardsunnymeng.github.io/), Bo Peng, Jing Dong
+Authors: Zheling Meng, Bo Peng, Jing Dong
 
 New Laboratory of Pattern Recognition (NLPR), Institute of Automation, CAS
 
@@ -67,7 +67,8 @@ Please refer to the repo [WatermarkAttacker](https://github.com/XuandongZhao/Wat
 The code is built upon [Stable Diffusion](https://github.com/CompVis/stable-diffusion).
 
 # To-Do-List
-- [ ] Fix the extraction bugs.
+- [x] Fix the training and extraction bugs.
+- [ ] Align the Performance.
 
 # Reference
 Please cite our paper if you use our models in your works:
